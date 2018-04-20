@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import static java.lang.System.out;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Cheaters {
     
     File dir = new File("C:/Users/Michael/Documents/NetBeansProjects/Assignment7/sm_doc_set/sm_doc_set");
     File[] directoryListing = dir.listFiles();
+    ArrayList<String> files = new ArrayList<>();
     int i = 0;
     
     public void cleanFile() throws IOException {
@@ -29,19 +31,20 @@ public class Cheaters {
             String line;
             String processedLine="";
             while ((line = in.readLine()) != null) {
-                processedLine = line.replaceAll("[^a-zA-Z0-9]"," ").toLowerCase().replaceAll("( )+", " ");
-                System.out.println(processedLine);
+                processedLine += line.replaceAll("[^a-zA-Z0-9]"," ").toLowerCase().replaceAll("( )+", " ");
             }
             
-            System.out.println("\n \n File " + i);
-        
+            files.add(processedLine);
+            //System.out.println(processedLine);
+            
         }
     }
     
     
     public static void main(String[] args) throws IOException {
-        Cheaters obj = new Cheaters();
-        obj.cleanFile();
+        Cheaters cheat = new Cheaters();
+        cheat.cleanFile();
+        cheat.i++;
     }
     
     
